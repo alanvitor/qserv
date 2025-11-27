@@ -42,22 +42,22 @@ Um servidor de arquivos estáticos leve, rápido e rico em recursos, escrito em 
 ### Compilar do fonte
 
 ```bash
-git clone https://github.com/5prw/serve.git
-cd serve
-go build -o serve
+git clone https://github.com/5prw/qserv.git
+cd qserv
+go build -o qserv
 ```
 
 ### Compilar para múltiplas plataformas
 
 ```bash
 # Linux
-GOOS=linux GOARCH=amd64 go build -o serve-linux
+GOOS=linux GOARCH=amd64 go build -o qserv-linux
 
 # Windows
-GOOS=windows GOARCH=amd64 go build -o serve.exe
+GOOS=windows GOARCH=amd64 go build -o qserv.exe
 
 # macOS
-GOOS=darwin GOARCH=amd64 go build -o serve-macos
+GOOS=darwin GOARCH=amd64 go build -o qserv-macos
 ```
 
 ## Uso Rápido
@@ -66,26 +66,26 @@ GOOS=darwin GOARCH=amd64 go build -o serve-macos
 
 ```bash
 # Serve o diretório atual na porta 8080
-./serve
+./qserv
 
 # Serve um diretório específico
-./serve -dir /var/www
+./qserv -dir /var/www
 
 # Porta customizada
-./serve -port 3000
+./qserv -port 3000
 
 # Habilitar listagem de diretórios
-./serve -list
+./qserv -list
 ```
 
 ### Usando arquivo de configuração
 
 ```bash
 # Gerar arquivo de configuração de exemplo
-./serve -generate-config config.json
+./qserv -generate-config config.json
 
 # Iniciar com configuração
-./serve -config config.json
+./qserv -config config.json
 ```
 
 ## Configuração
@@ -204,7 +204,7 @@ O arquivo de configuração usa formato JSON. Exemplo completo:
 
 ```bash
 # Serve aplicação React/Vue/Angular
-./serve -dir ./dist -port 3000 -list
+./qserv -dir ./dist -port 3000 -list
 ```
 
 ### 2. Single Page Application (SPA)
@@ -225,7 +225,7 @@ Crie um arquivo `config.json`:
 ```
 
 ```bash
-./serve -config config.json
+./qserv -config config.json
 ```
 
 ### 3. Servidor com Autenticação
@@ -317,7 +317,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
     "level": "info",
     "access_log": true,
     "error_log": true,
-    "log_file": "/var/log/serve.log"
+    "log_file": "/var/log/qserv.log"
   }
 }
 ```
@@ -480,9 +480,9 @@ MIT License - veja o arquivo LICENSE para detalhes.
 
 ## Suporte
 
-- 🐛 [Report de Bugs](https://github.com/5prw/serve/issues)
-- 💡 [Feature Requests](https://github.com/5prw/serve/issues)
-- 📖 [Documentação](https://github.com/5prw/serve/wiki)
+- 🐛 [Report de Bugs](https://github.com/5prw/qserv/issues)
+- 💡 [Feature Requests](https://github.com/5prw/qserv/issues)
+- 📖 [Documentação](https://github.com/5prw/qserv/wiki)
 
 ---
 

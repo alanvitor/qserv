@@ -120,7 +120,7 @@ Complete development documentation, architecture decisions, and technical contex
 ## File Structure
 
 ```
-serve/
+qserv/
 ├── main.go                 # CLI entry point, flag parsing, application lifecycle
 ├── config.go               # Configuration structures and JSON loading
 ├── server.go               # HTTP server, file serving logic, directory listing
@@ -763,9 +763,9 @@ make build-all
 make release-local
 
 # Manual
-GOOS=linux GOARCH=amd64 go build -o serve-linux-amd64
-GOOS=darwin GOARCH=arm64 go build -o serve-darwin-arm64
-GOOS=windows GOARCH=amd64 go build -o serve-windows-amd64.exe
+GOOS=linux GOARCH=amd64 go build -o qserv-linux-amd64
+GOOS=darwin GOARCH=arm64 go build -o qserv-darwin-arm64
+GOOS=windows GOARCH=amd64 go build -o qserv-windows-amd64.exe
 ```
 
 ### Debugging
@@ -830,11 +830,11 @@ Create `server_test.go` with:
 
 ### Systemd Service
 
-Create `/etc/systemd/system/serve.service`:
+Create `/etc/systemd/system/qserv.service`:
 
 ```ini
 [Unit]
-Description=Serve Static File Server
+Description=QServ Static File Server
 After=network.target
 
 [Service]
@@ -842,7 +842,7 @@ Type=simple
 User=www-data
 Group=www-data
 WorkingDirectory=/var/www
-ExecStart=/usr/local/bin/serve -config /etc/serve/config.json
+ExecStart=/usr/local/bin/qserv -config /etc/qserv/config.json
 Restart=on-failure
 RestartSec=5s
 
@@ -852,9 +852,9 @@ WantedBy=multi-user.target
 
 Enable and start:
 ```bash
-sudo systemctl enable serve
-sudo systemctl start serve
-sudo systemctl status serve
+sudo systemctl enable qserv
+sudo systemctl start qserv
+sudo systemctl status qserv
 ```
 
 ### Docker Deployment
@@ -907,13 +907,13 @@ server {
 
 ```bash
 # Count requests by status code
-cat serve.log | grep -oP '\d{3}' | sort | uniq -c
+cat qserv.log | grep -oP '\d{3}' | sort | uniq -c
 
 # Top requested paths
-cat serve.log | grep -oP 'GET \K[^ ]+' | sort | uniq -c | sort -rn | head -10
+cat qserv.log | grep -oP 'GET \K[^ ]+' | sort | uniq -c | sort -rn | head -10
 
 # Slow requests (>1s)
-cat serve.log | awk -F' - ' '$3 > 1000 {print}'
+cat qserv.log | awk -F' - ' '$3 > 1000 {print}'
 ```
 
 ---

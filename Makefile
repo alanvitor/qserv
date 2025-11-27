@@ -10,31 +10,31 @@ help: ## Show this help message
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  %-15s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 build: ## Build for current platform
-	go build -ldflags="$(LDFLAGS)" -o serve
+	go build -ldflags="$(LDFLAGS)" -o qserv
 
 build-all: ## Build for all platforms
 	@echo "Building for all platforms..."
-	GOOS=linux GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/serve-linux-amd64
-	GOOS=linux GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/serve-linux-arm64
-	GOOS=darwin GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/serve-darwin-amd64
-	GOOS=darwin GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/serve-darwin-arm64
-	GOOS=windows GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/serve-windows-amd64.exe
-	GOOS=windows GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/serve-windows-arm64.exe
+	GOOS=linux GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-linux-amd64
+	GOOS=linux GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-linux-arm64
+	GOOS=darwin GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-darwin-amd64
+	GOOS=darwin GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-darwin-arm64
+	GOOS=windows GOARCH=amd64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-windows-amd64.exe
+	GOOS=windows GOARCH=arm64 go build -ldflags="$(LDFLAGS)" -o dist/qserv-windows-arm64.exe
 	@echo "Done! Binaries are in ./dist/"
 
 release-local: clean build-all ## Create local release archives
 	@echo "Creating release archives..."
 	@mkdir -p dist/archives
-	cd dist && tar -czf archives/serve-linux-amd64.tar.gz serve-linux-amd64 ../README.md ../LICENSE ../config.example.json
-	cd dist && tar -czf archives/serve-linux-arm64.tar.gz serve-linux-arm64 ../README.md ../LICENSE ../config.example.json
-	cd dist && tar -czf archives/serve-darwin-amd64.tar.gz serve-darwin-amd64 ../README.md ../LICENSE ../config.example.json
-	cd dist && tar -czf archives/serve-darwin-arm64.tar.gz serve-darwin-arm64 ../README.md ../LICENSE ../config.example.json
-	cd dist && zip -q archives/serve-windows-amd64.zip serve-windows-amd64.exe ../README.md ../LICENSE ../config.example.json
-	cd dist && zip -q archives/serve-windows-arm64.zip serve-windows-arm64.exe ../README.md ../LICENSE ../config.example.json
+	cd dist && tar -czf archives/qserv-linux-amd64.tar.gz qserv-linux-amd64 ../README.md ../LICENSE ../config.example.json
+	cd dist && tar -czf archives/qserv-linux-arm64.tar.gz qserv-linux-arm64 ../README.md ../LICENSE ../config.example.json
+	cd dist && tar -czf archives/qserv-darwin-amd64.tar.gz qserv-darwin-amd64 ../README.md ../LICENSE ../config.example.json
+	cd dist && tar -czf archives/qserv-darwin-arm64.tar.gz qserv-darwin-arm64 ../README.md ../LICENSE ../config.example.json
+	cd dist && zip -q archives/qserv-windows-amd64.zip qserv-windows-amd64.exe ../README.md ../LICENSE ../config.example.json
+	cd dist && zip -q archives/qserv-windows-arm64.zip qserv-windows-arm64.exe ../README.md ../LICENSE ../config.example.json
 	@echo "Done! Archives are in ./dist/archives/"
 
 clean: ## Clean build artifacts
-	rm -f serve
+	rm -f qserv
 	rm -rf dist/
 
 test: ## Run tests

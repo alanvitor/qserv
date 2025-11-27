@@ -36,22 +36,22 @@ jobs:
         include:
           - goos: linux
             goarch: amd64
-            output: serve-linux-amd64
+            output: qserv-linux-amd64
           - goos: linux
             goarch: arm64
-            output: serve-linux-arm64
+            output: qserv-linux-arm64
           - goos: darwin
             goarch: amd64
-            output: serve-darwin-amd64
+            output: qserv-darwin-amd64
           - goos: darwin
             goarch: arm64
-            output: serve-darwin-arm64
+            output: qserv-darwin-arm64
           - goos: windows
             goarch: amd64
-            output: serve-windows-amd64.exe
+            output: qserv-windows-amd64.exe
           - goos: windows
             goarch: arm64
-            output: serve-windows-arm64.exe
+            output: qserv-windows-arm64.exe
 
     steps:
       - name: Checkout code
@@ -135,12 +135,12 @@ make build-all
 ```
 
 This creates binaries in `./dist/`:
-- `serve-linux-amd64`
-- `serve-linux-arm64`
-- `serve-darwin-amd64`
-- `serve-darwin-arm64`
-- `serve-windows-amd64.exe`
-- `serve-windows-arm64.exe`
+- `qserv-linux-amd64`
+- `qserv-linux-arm64`
+- `qserv-darwin-amd64`
+- `qserv-darwin-arm64`
+- `qserv-windows-amd64.exe`
+- `qserv-windows-arm64.exe`
 
 ### Create Release Archives
 
@@ -149,12 +149,12 @@ make release-local
 ```
 
 This creates archives in `./dist/archives/`:
-- `serve-linux-amd64.tar.gz`
-- `serve-linux-arm64.tar.gz`
-- `serve-darwin-amd64.tar.gz`
-- `serve-darwin-arm64.tar.gz`
-- `serve-windows-amd64.zip`
-- `serve-windows-arm64.zip`
+- `qserv-linux-amd64.tar.gz`
+- `qserv-linux-arm64.tar.gz`
+- `qserv-darwin-amd64.tar.gz`
+- `qserv-darwin-arm64.tar.gz`
+- `qserv-windows-amd64.zip`
+- `qserv-windows-arm64.zip`
 
 ### Upload to GitHub
 

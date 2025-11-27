@@ -182,7 +182,7 @@ services:
       - APP_ANALYTICS_ID=${ANALYTICS_ID}
     volumes:
       - ./config.json:/app/config.json
-    command: ["/app/serve", "-config", "/app/config.json", "-dir", "/app/build"]
+    command: ["/app/qserv", "-config", "/app/config.json", "-dir", "/app/build"]
 ```
 
 **config.json**:
@@ -273,12 +273,12 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: serve-config
+          name: qserv-config
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: serve-config
+  name: qserv-config
 data:
   config.json: |
     {
@@ -473,10 +473,10 @@ RUN npm run build
 FROM alpine:latest
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /app/build /app/build
-COPY --from=builder /app/serve /app/serve
+COPY --from=builder /app/qserv /app/qserv
 COPY --from=builder /app/config.json /app/config.json
 EXPOSE 8080
-CMD ["/app/serve", "-config", "/app/config.json", "-dir", "/app/build"]
+CMD ["/app/qserv", "-config", "/app/config.json", "-dir", "/app/build"]
 ```
 
 **config.json**:

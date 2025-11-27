@@ -48,30 +48,30 @@ Download the latest release for your platform from the [releases page](https://g
 #### Linux/macOS
 ```bash
 # Download and extract
-tar -xzf serve-linux-amd64.tar.gz
+tar -xzf qserv-linux-amd64.tar.gz
 
 # Make executable and move to PATH
-chmod +x serve-linux-amd64
-sudo mv serve-linux-amd64 /usr/local/bin/serve
+chmod +x qserv-linux-amd64
+sudo mv qserv-linux-amd64 /usr/local/bin/qserv
 
 # Verify installation
-serve -version
+qserv -version
 ```
 
 #### Windows
 ```powershell
-# Download and extract serve-windows-amd64.zip
+# Download and extract qserv-windows-amd64.zip
 
 # Add to PATH or run directly
-.\serve-windows-amd64.exe -version
+.\qserv-windows-amd64.exe -version
 ```
 
 ### Build from Source
 
 ```bash
-git clone https://github.com/5prw/serve.git
-cd serve
-go build -o serve
+git clone https://github.com/5prw/qserv.git
+cd qserv
+go build -o qserv
 ```
 
 ### Using Make
@@ -96,26 +96,26 @@ make help
 
 ```bash
 # Serve current directory on port 8080
-./serve
+./qserv
 
 # Serve a specific directory
-./serve -dir /var/www
+./qserv -dir /var/www
 
 # Custom port
-./serve -port 3000
+./qserv -port 3000
 
 # Enable directory listing
-./serve -list
+./qserv -list
 ```
 
 ### Using Configuration File
 
 ```bash
 # Generate example configuration
-./serve -generate-config config.json
+./qserv -generate-config config.json
 
 # Start with configuration
-./serve -config config.json
+./qserv -config config.json
 ```
 
 ## Configuration
@@ -234,7 +234,7 @@ The configuration file uses JSON format. Complete example:
 
 ```bash
 # Serve React/Vue/Angular app
-./serve -dir ./dist -port 3000 -list
+./qserv -dir ./dist -port 3000 -list
 ```
 
 ### 2. Single Page Application (SPA)
@@ -255,7 +255,7 @@ Create a `config.json`:
 ```
 
 ```bash
-./serve -config config.json
+./qserv -config config.json
 ```
 
 ### 3. Server with Authentication
@@ -347,7 +347,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
     "level": "info",
     "access_log": true,
     "error_log": true,
-    "log_file": "/var/log/serve.log"
+    "log_file": "/var/log/qserv.log"
   }
 }
 ```
@@ -502,15 +502,15 @@ Create a `Dockerfile`:
 FROM golang:1.21-alpine AS builder
 WORKDIR /app
 COPY . .
-RUN go build -ldflags="-s -w" -o serve
+RUN go build -ldflags="-s -w" -o qserv
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /app/serve .
+COPY --from=builder /app/qserv .
 COPY --from=builder /app/config.example.json .
 EXPOSE 8080
-CMD ["./serve"]
+CMD ["./qserv"]
 ```
 
 Build and run:

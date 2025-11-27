@@ -18,22 +18,22 @@ jobs:
         include:
           - goos: linux
             goarch: amd64
-            output: serve-linux-amd64
+            output: qserv-linux-amd64
           - goos: linux
             goarch: arm64
-            output: serve-linux-arm64
+            output: qserv-linux-arm64
           - goos: darwin
             goarch: amd64
-            output: serve-darwin-amd64
+            output: qserv-darwin-amd64
           - goos: darwin
             goarch: arm64
-            output: serve-darwin-arm64
+            output: qserv-darwin-arm64
           - goos: windows
             goarch: amd64
-            output: serve-windows-amd64.exe
+            output: qserv-windows-amd64.exe
           - goos: windows
             goarch: arm64
-            output: serve-windows-arm64.exe
+            output: qserv-windows-arm64.exe
 
     steps:
       - name: Checkout code
