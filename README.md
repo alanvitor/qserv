@@ -1,4 +1,4 @@
-# Serve - Static File Server
+# QServe - Quick Serve
 
 A lightweight, fast, and feature-rich static file server written in Go. Perfect for development, testing, and production.
 
@@ -43,7 +43,7 @@ A lightweight, fast, and feature-rich static file server written in Go. Perfect 
 
 ### Download Pre-built Binaries
 
-Download the latest release for your platform from the [releases page](https://github.com/5prw/serve/releases).
+Download the latest release for your platform from the [releases page](https://github.com/5prw/qserv/releases).
 
 #### Linux/macOS
 ```bash
