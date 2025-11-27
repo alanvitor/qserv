@@ -1,6 +1,6 @@
 # Binaries
-serve
-serve-*
+qserv
+qserv-*
 dist/
 
 # Git

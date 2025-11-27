@@ -92,12 +92,12 @@ This is the first production-ready release of Serve, a static file server writte
 - Cross-platform support (Linux, Windows, macOS, ARM)
 - Single binary with no dependencies
 
-**Download**: See [Releases](https://github.com/5prw/serve/releases)
+**Download**: See [Releases](https://github.com/5prw/qserv/releases)
 
 **Documentation**: See [README.md](README.md) and [CONTEXT.md](CONTEXT.md)
 
 ---
 
-[Unreleased]: https://github.com/5prw/serve/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/5prw/serve/releases/tag/v1.0.0
-[0.1.0]: https://github.com/5prw/serve/releases/tag/v0.1.0
+[Unreleased]: https://github.com/5prw/qserv/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/5prw/qserv/releases/tag/v1.0.0
+[0.1.0]: https://github.com/5prw/qserv/releases/tag/v0.1.0

@@ -16,8 +16,8 @@ coverage.html
 go.work
 
 # Compiled binary
-serve
-serve-*
+qserv
+qserv-*
 dist/
 
 # Configuration files (may contain sensitive data)

@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  serve:
+  qserv:
     build: .
-    container_name: serve
+    container_name: qserv
     ports:
       - "8080:8080"
     volumes:
@@ -18,9 +18,9 @@ services:
     # command: ["-config", "/app/config.json"]
 
   # Example with HTTPS
-  serve-https:
+  qserv-https:
     build: .
-    container_name: serve-https
+    container_name: qserv-https
     ports:
       - "8443:8443"
     volumes:
@@ -33,9 +33,9 @@ services:
       - https
 
   # Example with authentication
-  serve-auth:
+  qserv-auth:
     build: .
-    container_name: serve-auth
+    container_name: qserv-auth
     ports:
       - "8081:8080"
     volumes:

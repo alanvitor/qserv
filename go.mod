@@ -1,3 +1,3 @@
-module serve
+module qserv
 
 go 1.24.7

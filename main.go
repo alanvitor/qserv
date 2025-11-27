@@ -25,7 +25,7 @@ func main() {
 
 	// Mostra versão
 	if *showVersion {
-		fmt.Printf("serve version %s\n", version)
+		fmt.Printf("qserv version %s\n", version)
 		os.Exit(0)
 	}
 
@@ -172,13 +172,13 @@ func validateConfig(config *Config) error {
 
 // printHelp imprime a ajuda
 func printHelp() {
-	fmt.Printf(`serve - Simple HTTP file server with advanced features
+	fmt.Printf(`qserv - Simple HTTP file server with advanced features
 
 VERSION:
   %s
 
 USAGE:
-  serve [options]
+  qserv [options]
 
 OPTIONS:
   -config string
@@ -207,19 +207,19 @@ OPTIONS:
 
 EXAMPLES:
   # Serve current directory on port 8080
-  serve
+  qserv
 
   # Serve specific directory on custom port
-  serve -dir /var/www -port 3000
+  qserv -dir /var/www -port 3000
 
   # Enable directory listing
-  serve -list
+  qserv -list
 
   # Use configuration file
-  serve -config config.json
+  qserv -config config.json
 
   # Generate example configuration
-  serve -generate-config config.example.json
+  qserv -generate-config config.example.json
 
 CONFIGURATION:
   Configuration can be provided via a JSON file using the -config flag.
@@ -241,6 +241,6 @@ FEATURES:
   • Access logging
   • Security headers
 
-For more information, visit: https://github.com/5prw/serve
+For more information, visit: https://github.com/5prw/qserv
 `, version)
 }
