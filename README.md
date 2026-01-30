@@ -167,7 +167,7 @@ The configuration file uses JSON format. Complete example:
     "cache_max_age": 3600,
     "enable_etags": true,
     "custom_headers": {
-      "X-Powered-By": "Serve"
+      "X-Powered-By": "QServ"
     }
   },
   "logging": {
